@@ -16,7 +16,7 @@ public class Main {
                     int clueLimit = gui.getClueLimit(); // Renamed from getNumberOfClues
 
                     // Pass the information to ClueSolver without printing anything
-                    ClueSolver instance = new ClueSolver(selectedDifficulty, timerMode, clueCountingMode, timeInMinutes, clueLimit);
+                    ClueSolver instance = new ClueSolver(selectedDifficulty, timerMode, timeInMinutes, clueCountingMode,clueLimit);
 
                     gui.dispose(); // Close the GUI
                 });
