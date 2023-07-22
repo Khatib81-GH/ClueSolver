@@ -2,7 +2,7 @@ import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) {
-        //Selects Difficulty using a GUI
+        // Selects Difficulty using a GUI
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -10,9 +10,15 @@ public class Main {
 
                 gui.addConfirmButtonListener(e -> {
                     ClueLevel selectedDifficulty = gui.getSelectedDifficulty();
-                    System.out.println("Selected Difficulty: " + selectedDifficulty);
+                    boolean timerMode = gui.isTimerMode();
+                    boolean clueCountingMode = gui.isClueLimitMode();
+                    int timeInMinutes = gui.getTimeInMinutes();
+                    int clueLimit = gui.getClueLimit(); // Renamed from getNumberOfClues
+
+                    // Pass the information to ClueSolver without printing anything
+                    ClueSolver instance = new ClueSolver(selectedDifficulty, timerMode, clueCountingMode, timeInMinutes, clueLimit);
+
                     gui.dispose(); // Close the GUI
-                    ClueSolver instance = new ClueSolver(selectedDifficulty);
                 });
             }
         });
