@@ -3,7 +3,7 @@ import org.opencv.highgui.HighGui;
 import org.opencv.videoio.VideoCapture;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-
+import javax.swing.SwingUtilities;
 public class Main {
     public static void main(String[] args) {
         // Load the OpenCV native library

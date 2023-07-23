@@ -20,7 +20,9 @@ public class ObjectDetection {
 
         // Process the detections and draw bounding boxes
         for (int i = 0; i < detections.rows(); i++) {
-            double confidence = detections.get(i, 5)[0];
+            double confidence = detections.get(i, 5)[0]; // Use double for confidence (32-bit floating-point)
+
+            // Rest of the code remains unchanged
             if (confidence > 0.5) {
                 double[] data = new double[4];
                 detections.get(i, 0, data);
@@ -36,4 +38,5 @@ public class ObjectDetection {
             }
         }
     }
+
 }
