@@ -2,24 +2,24 @@ import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) {
-        // Selects Difficulty using a GUI
-        SwingUtilities.invokeLater(new Runnable() {
+        // Create and display the GUI to get user input
+        GUI gui = new GUI();
+        gui.addConfirmButtonListener(new GUI.ConfirmButtonListener() {
             @Override
-            public void run() {
-                GUI gui = new GUI(); // Create an instance of the GUI class
+            public void confirmButtonClicked(GUI.ConfirmButtonEvent event) {
+                // Get user input from the GUI
+                ClueLevel difficulty = gui.getSelectedDifficulty();
+                boolean timerMode = gui.isTimerMode();
+                int timeLimitInMinutes = gui.getTimeInMinutes();
+                boolean clueLimitMode = gui.isClueLimitMode();
+                int clueLimit = gui.getClueLimit();
 
-                gui.addConfirmButtonListener(e -> {
-                    ClueLevel selectedDifficulty = gui.getSelectedDifficulty();
-                    boolean timerMode = gui.isTimerMode();
-                    boolean clueCountingMode = gui.isClueLimitMode();
-                    int timeInMinutes = gui.getTimeInMinutes();
-                    int clueLimit = gui.getClueLimit(); // Renamed from getNumberOfClues
+                // Close the GUI after getting the input
+                gui.dispose();
 
-                    // Pass the information to ClueSolver without printing anything
-                    ClueSolver instance = new ClueSolver(selectedDifficulty, timerMode, timeInMinutes, clueCountingMode,clueLimit);
-
-                    gui.dispose(); // Close the GUI
-                });
+                // Create and run the ClueSolver with user input
+                ClueSolver clueSolver = new ClueSolver(difficulty, timerMode, timeLimitInMinutes, clueLimitMode, clueLimit);
+                clueSolver.runClueSolver();
             }
         });
     }

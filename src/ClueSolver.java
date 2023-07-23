@@ -33,6 +33,9 @@ public class ClueSolver {
         while (true) {
             try {
                 // ... (code to solve clues)
+                //Open Clue
+                //Call OD For Steps
+                //Call StepSolver
 
                 if (clueLimitMode && cluesDone >= clueLimit) {
                     displayClueLimitPopup();
